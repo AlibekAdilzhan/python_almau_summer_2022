@@ -42,14 +42,12 @@ block = pygame.transform.scale(block, (block_size, block_size))
 hero_x = 50
 hero_y = 100
 hero_rect = pygame.Rect(hero_x, hero_y, block_size, block_size)
-
-block_rects = [] 
+ 
 
 for i in range(len(game_map)):
     for j in range(len(game_map[i])):
         if game_map[i][j] == "b":
             block_rect = pygame.Rect(block_size * j + 35, block_size * i, block_size - 35, block_size)
-            block_rects.append(block_rect)
             print(block_size * i, block_size * j, i, j)
 # Game loop.
 while not exit:
