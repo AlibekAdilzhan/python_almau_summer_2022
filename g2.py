@@ -14,15 +14,17 @@ gravity = 3
 ground = 500
 camera_x = 3
 block_rects = []
+hero_long = 30
+hero_big = 30
 game_map = [
     "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-    "b..b...b...........................b",
-    "b..b....b........................b",
-    "b..b..b...b........................b",
-    "b..b..b............................b",
-    "b..b..b............................b",
-    "b..b..b............................b",
-    "b.....b............................b",
+    "b....b...b.........................b",
+    "b.bb...b...........................b",
+    "b.bb.b....b........................b",
+    "b......b...........................b",
+    "b.bbb..............................b",
+    "b.bb..b.b..........................b",
+    "b.b..b..b..........................b",
     "b.....b............................b",
     "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
 ]
@@ -39,7 +41,7 @@ for i in range(len(game_map)):
 run = True
 square_x = 150
 square_y = 150
-hero_rect = pygame.Rect(square_x, square_y, block_size, block_size)
+hero_rect = pygame.Rect(square_x, square_y, hero_big, hero_long)
 camera_x = 0
 # Game loop.
 o = 0
@@ -56,7 +58,7 @@ while run:
     elif keystate[pygame.K_s]:
         square_y += 5
     
-    
+    screen.print(fps)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
@@ -71,16 +73,18 @@ while run:
     # конфликт
     for block_rect in block_rects:
         screen.blit(block, (block_rect.x - camera_x, block_rect.y))
+        pygame.draw.circle(screen, (0, 0, 0), (block_rect.x - camera_x, block_rect.y), 3)
         if hero_rect.colliderect(block_rect):
-            square_x = 100
-            square_y = 100
+            square_x = 75
+            square_y = 75
     # делает карту
     # for i in range(len(game_map)):
     #     for j in range(len(game_map[i])):
     #         if game_map[i][j] == "b":
                 # block_rect = pygame.Rect(block_size * j + 35, block_size * i, block_size - 35, block_size)
                 # screen.blit(block, (j * block_size, i * block_size))
-    pygame.draw.rect(screen, (255, 255, 255), (square_x - camera_x, square_y, 10, 10))
+    pygame.draw.rect(screen, (255, 255, 255), (square_x - camera_x, square_y, hero_long, hero_big))
+    pygame.draw.circle(screen, (255, 255, 0), (hero_rect.x - camera_x, hero_rect.y), 3)
     pygame.display.flip()
     clock.tick(fps)
          
