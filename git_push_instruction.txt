@@ -1,0 +1,3 @@
+git add <name of the file>
+git commit -m "message"
+git push
