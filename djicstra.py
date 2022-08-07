@@ -1,3 +1,5 @@
+
+# this is the map
 map = [
     [1, 1, 1, 0, 1, 1, 1, 1],
     [1, 2, 1, 0, 1, 0, 0, 1],
@@ -17,6 +19,7 @@ start = [1, 1]
 exit = [0, 3]
 queue = [start]
 
+# this cycle is for searching the number of minimal steps
 while True:
     current = queue[0]
     cx = current[0]
@@ -37,7 +40,7 @@ while True:
     if queue == []:
         break
 
-
+# this cycle is for searching minimal path
 path = []
 current = exit
 while True:
