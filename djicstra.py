@@ -38,11 +38,6 @@ while True:
         break
 
 
-
-# for i in range(len(map)):
-#     print(map[i])
-
-
 path = []
 current = exit
 while True:
